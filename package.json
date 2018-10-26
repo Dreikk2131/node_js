@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "stack app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dreikk2131/git-teach.git"
+  },
+  "author": "Kirill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dreikk2131/git-teach/issues"
+  },
+  "homepage": "https://github.com/Dreikk2131/git-teach#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
