@@ -4,6 +4,7 @@
   "description": "stack app",
   "main": "index.js",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,10 @@
   "homepage": "https://github.com/Dreikk2131/git-teach#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-config-recommended": "^4.0.0"
   }
 }
