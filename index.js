@@ -1,17 +1,19 @@
 const express = require('express');
 const app = express();
+const router = new express.Router();
+
 const arr = [];
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send(arr);
 });
 
-app.get('/add/:name', (req, res)=>{
+router.post('/add/:name', (req, res)=>{
   arr.push(req.params.name);
   res.send('OK');
 });
 
-app.get('/delete/:name', (req, res)=>{
+router.delete('/delete/:name', (req, res)=>{
   let item = 0;
   while (item<=arr.length) {
     let y = arr.indexOf(req.params.name); //eslint-disable-line
@@ -22,5 +24,7 @@ app.get('/delete/:name', (req, res)=>{
   }
   res.send('OK');
 });
+
+app.use('/', router);
 
 app.listen(5000, ()=> console.log('Server has been started'));
