@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const arr = [];
+app.use(express.static(__dirname));
 
 app.get('/', (req, res) => {
-  res.send(arr);
+  res.sendFile(__dirname+'/start.html');
 });
+
 
 app.get('/add/:name', (req, res)=>{
   arr.push(req.params.name);
