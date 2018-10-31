@@ -1,0 +1,69 @@
+body{
+    background-color: bisque;
+    font-family: 'Mali', cursive;
+    color:#006363;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+header{
+    background-color: #FF7300;
+    margin:0px 100px;
+    display: flex;
+    color:#009999;
+}
+
+.brand a{
+    margin-left: 200px;
+    color:#009999;
+}
+
+.slogan{
+    margin:auto 50px;
+    font-size:20px;
+    font-weight: bold;
+}
+
+section{
+    background: linear-gradient(to right, bisque, white, bisque);
+    margin:0px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.for{
+    display:flex;
+    flex-direction: row;
+}
+
+.refer{
+    border-bottom:1px solid black;
+}
+
+
+div{
+    border-bottom: 1px solid black;
+    width:800px;
+}
+
+.refer .button{
+    margin: 200px 50px;
+}
+
+div .button a{
+    display: inline-block;
+    border:1px solid black;
+    width:150px;
+    height:40px;
+    color:black;
+    text-align: center;
+    vertical-align: middle;
+    background-color: beige;
+    margin:auto;
+}
