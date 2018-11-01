@@ -10,7 +10,7 @@ a{
     text-decoration: none;
 }
 
-header{
+.head{
     background-color: #FF7300;
     margin:0px 100px;
     display: flex;
@@ -28,7 +28,7 @@ header{
     font-weight: bold;
 }
 
-section{
+.main_content{
     background: linear-gradient(to right, bisque, white, bisque);
     margin:0px 100px;
     display: flex;
@@ -37,10 +37,10 @@ section{
     justify-content: center;
 }
 
-textarea{
+[class^="area"]{
     margin: 40px 0px;
 }
 
-input{
+.button{
     display: inline-block;
 }

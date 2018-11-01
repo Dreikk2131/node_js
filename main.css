@@ -10,7 +10,7 @@ a{
     text-decoration: none;
 }
 
-header{
+.head{
     background-color: #FF7300;
     margin:0px 100px;
     display: flex;
@@ -28,7 +28,7 @@ header{
     font-weight: bold;
 }
 
-section{
+.main_content{
     background: linear-gradient(to right, bisque, white, bisque);
     margin:0px 100px;
     display: flex;
@@ -40,14 +40,6 @@ section{
 .for{
     display:flex;
     flex-direction: row;
-}
-
-.refer{
-    border-bottom:1px solid black;
-}
-
-
-div{
     border-bottom: 1px solid black;
     width:800px;
 }
