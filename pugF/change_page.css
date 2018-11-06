@@ -1,0 +1,46 @@
+body{
+    background-color: bisque;
+    font-family: 'Mali', cursive;
+    color:#006363;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.head{
+    background-color: #FF7300;
+    margin:0px 100px;
+    display: flex;
+    color:#009999;
+}
+
+.head-brand a{
+    margin-left: 200px;
+    color:#009999;
+}
+
+.head-slogan{
+    margin:auto 50px;
+    font-size:20px;
+    font-weight: bold;
+}
+
+.content{
+    background: linear-gradient(to right, bisque, white, bisque);
+    margin:0px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+[class^="area"]{
+    margin: 40px 0px;
+}
+
+.button{
+    display: inline-block;
+}
