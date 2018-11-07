@@ -21,9 +21,11 @@ body
                     li Соды, гашенная лимонным соком – 1 ложка
                     li Сахара 80 грамм
                     li Яичный желток 1 шт.
-            .content-refer
-                p.button
-                    a(href='/download') Редактировать
+            mixin button
+                .content-refer
+                    p.button
+                        a(href='/change_page') Редактировать
+            +button
         .content-for
             .content-text
                 h2 Рецепт 2: Рогалики с начинкой из мармелада
@@ -36,9 +38,7 @@ body
                     li Яичный желток 1 шт. (для смазывания изделий)
                     li Сахарный песок 120 грамм
                     li Молока 220 мл
-            .content-refer
-                p.button
-                    a(href='/change_page') Редактировать
+            +button
         .content-for
             .content-text
                 h2 Рецепт 3: Рогалики с начинкой из сгущенки
@@ -51,9 +51,7 @@ body
                     li соль
                     li Сгущенка вареная густая
                     li Дрожжи сухие 1 столовая ложка
-            .content-refer
-                p.button
-                    a(href='/change_page') Редактировать
+            +button
         .content-for
             .content-text
                 h2 Рецепт 4: Рогалики с начинкой из яблок
@@ -67,6 +65,4 @@ body
                     li Дрожжей 1 ст.л.
                     li 3 яблока
                     li соль, корица, масло растительное
-            .content-refer
-                p.button
-                    a(href='/change_page') Редактировать
+            +button
