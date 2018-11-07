@@ -6,7 +6,7 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/static'));
 
 app.get('/', (req, res) => {
-  res.render('header');
+  res.render('start');
 });
 
 app.get('/download', (req, res) => {
@@ -14,7 +14,7 @@ app.get('/download', (req, res) => {
 });
 
 app.get('/change_page', (req, res) => {
-  res.render('header1.pug');
+  res.render('change_page');
 });
 
 app.listen(5000, ()=> console.log('Server has been started'));

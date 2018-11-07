@@ -1,13 +1,17 @@
-doctype html
-html
-head
-    meta(charset='utf-8')
-    title recipe
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Mali:400,700")
+extends layout.pug
+
+mixin button
+    .content-refer
+        p.button
+            a(href='/change_page') Редактировать
+
+mixin div
+    .content-text
+
+block link
     link(rel="stylesheet", href="main.css")
 
-body
-    block header
+block main
     section.content
         div.content-for
             .content-text
@@ -21,13 +25,9 @@ body
                     li Соды, гашенная лимонным соком – 1 ложка
                     li Сахара 80 грамм
                     li Яичный желток 1 шт.
-            mixin button
-                .content-refer
-                    p.button
-                        a(href='/change_page') Редактировать
             +button
         .content-for
-            .content-text
+            +div
                 h2 Рецепт 2: Рогалики с начинкой из мармелада
                 img(src='img/nach2.jpg' alt='rogalick second')
                 p Достаточно необычными и вместе с тем вкусными получатся рогалики, если вы положите кусочек мармелада в них как начинку. Можете взять слоеный цветной мармелад, тогда десерт получится и вкусным, и красивым.

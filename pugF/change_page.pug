@@ -1,17 +1,15 @@
-doctype html
-html
-    head
-        meta(charset='utf-8')
-        title recipe
-        link(rel="stylesheet", href="change_page.css")
-    body
-        block header
-        section.content
-            form.content-form
-                input(type="text" value='name')
-                br
-                textarea.content-area(value='description' name="recipe1", cols="80", rows="15")
-                br
-                input.content-button(type="button" value='Отправить')
-                a(href='/')
-                    input(type="button" value='Закрыть')
+extends layout.pug
+
+block link
+    link(rel="stylesheet", href="change_page.css")
+
+block main
+    section.content
+        form.content-form
+            input(type="text" value='name')
+            br
+            textarea.content-area(value='description' name="recipe1", cols="80", rows="15")
+            br
+            input.content-button(type="button" value='Отправить')
+            a(href='/')
+                input(type="button" value='Закрыть')
