@@ -17,18 +17,18 @@ a{
     color:#009999;
 }
 
-.brand a{
+.head-brand a{
     margin-left: 200px;
     color:#009999;
 }
 
-.slogan{
+.head-slogan{
     margin:auto 50px;
     font-size:20px;
     font-weight: bold;
 }
 
-.main_content{
+.content{
     background: linear-gradient(to right, bisque, white, bisque);
     margin:0px 100px;
     display: flex;

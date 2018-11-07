@@ -7,9 +7,9 @@ head
     link(rel="stylesheet", href="main.css")
 
 body
-    include header
-    section(class='content')
-        div(class='content-for')
+    block header
+    section.content
+        div.content-for
             .content-text
                 h2 Рецепт 1: Рогалики с начинкой из варенья
                 img(src='img/nach1.jpg' alt='rogalick first')
@@ -22,7 +22,7 @@ body
                     li Сахара 80 грамм
                     li Яичный желток 1 шт.
             .content-refer
-                p(class='button')
+                p.button
                     a(href='/download') Редактировать
         .content-for
             .content-text
@@ -37,7 +37,7 @@ body
                     li Сахарный песок 120 грамм
                     li Молока 220 мл
             .content-refer
-                p(class='button')
+                p.button
                     a(href='/change_page') Редактировать
         .content-for
             .content-text
@@ -52,7 +52,7 @@ body
                     li Сгущенка вареная густая
                     li Дрожжи сухие 1 столовая ложка
             .content-refer
-                p(class='button')
+                p.button
                     a(href='/change_page') Редактировать
         .content-for
             .content-text
@@ -68,5 +68,5 @@ body
                     li 3 яблока
                     li соль, корица, масло растительное
             .content-refer
-                p(class='button')
+                p.button
                     a(href='/change_page') Редактировать

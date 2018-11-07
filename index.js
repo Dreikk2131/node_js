@@ -3,7 +3,7 @@ const app = express();
 
 app.set('views', './pugF');
 app.set('view engine', 'pug');
-app.use(express.static(__dirname + '/pugF'));
+app.use(express.static(__dirname + '/static'));
 
 app.get('/', (req, res) => {
   res.render('start');
