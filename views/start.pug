@@ -15,10 +15,9 @@ mixin recipe(recipe)
                 a(href='/change_page') Редактировать
 
 block link
+    link(rel='stylesheet', href='common.css')
     link(rel='stylesheet', href='main.css')
 
 block main
-        +recipe(rec1)
-        +recipe(rec2)
-        +recipe(rec3)
-        +recipe(rec4)
+        each item in recipes
+            +recipe(item)
