@@ -5,10 +5,19 @@ html
         title recipe
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Mali:400,700")
         block link
-    body
-        header.head
-            h1.head-brand
-                a(href='/') Rogalick
-            p.head-slogan This site about best recipe!
-        section.content
+    body.body.body_layout
+        header.head.title.content
+            h1.head__brand
+                a.link.head__link(href='/') Rogalick
+            p.head__slogan This site about best recipe!
+        section.content.content_layout
             block main
+        footer.foot.title
+            p.foot__text Вам понравилось?Подписывайтесь на нас в соцсетях
+            .foot__image-field
+                a(href='https://vk.com/')
+                    img.foot__image(src='img/vk.png' alt='vk')
+                a(href='https://ru-ru.facebook.com/')
+                    img.foot__image(src='img/fc.png' alt='facebook')
+                a(href='https://ok.ru/')
+                    img.foot__image(src='img/ok.png' alt='ok')

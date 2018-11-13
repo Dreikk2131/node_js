@@ -1,17 +1,16 @@
-
-
-.content-for{
+.recipe{
     display:flex;
     flex-direction: row;
     border-bottom: 1px solid black;
-    width:800px;
+    padding-left:100px;
+    padding-right: 100px;
 }
 
-.content-refer .button{
+.recipe__button{
     margin: 200px 50px;
 }
 
-div .button a{
+.recipe__link{
     display: inline-block;
     border:1px solid black;
     width:150px;

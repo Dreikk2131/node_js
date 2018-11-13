@@ -1,38 +1,52 @@
-body{
-    background-color: bisque;
+.body{
     font-family: 'Mali', cursive;
     color:#006363;
+}
+
+.body_layout{
+    background-color: bisque;
     padding-top: 0px;
     margin-top: 0px;
+    padding: 0px 100px;
 }
 
-a{
-    text-decoration: none;
-}
-
-.head{
+.title{
     background-color: #FF7300;
-    margin:0px 100px;
-    display: flex;
+    margin:0px auto;
+    color:#009999;
+    flex-direction: row;
+}
+
+.head__link{
     color:#009999;
 }
 
-.head-brand a{
-    margin-left: 200px;
-    color:#009999;
-}
-
-.head-slogan{
+.head__slogan{
     margin:auto 50px;
     font-size:20px;
     font-weight: bold;
 }
 
 .content{
-    background: linear-gradient(to right, bisque, white, bisque);
-    margin:0px 100px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.content_layout{
+    background: linear-gradient(to right, bisque, white, bisque);
+    margin:0px 100px;
+    flex-direction: column;
+}
+
+.foot__text{
+    font-weight:bold;
+}
+
+.foot__image-field{
+    margin-left:30px;
+}
+
+.link{
+    text-decoration: none;
 }
