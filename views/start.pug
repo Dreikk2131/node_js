@@ -1,0 +1,23 @@
+extends layout.pug
+
+mixin recipe(recipe)
+    .content-for
+        .content-text
+            h2= recipe.title
+            img(src= recipe.adress, alt= recipe.add)
+            p= recipe.ind
+            h3= recipe.head
+            ul
+                each item in recipe.items
+                    li= item
+        .content-refer
+            p.button
+                a(href='/change_page') Редактировать
+
+block link
+    link(rel='stylesheet', href='common.css')
+    link(rel='stylesheet', href='main.css')
+
+block main
+        each item in recipes
+            +recipe(item)

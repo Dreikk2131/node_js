@@ -1,0 +1,15 @@
+extends layout.pug
+
+block link
+    link(rel="stylesheet", href="common.css")
+    link(rel="stylesheet", href="change_page.css")
+
+block main
+        form.content-form
+            input(type="text" value='name')
+            br
+            textarea.content-area(value='description' name="recipe1", cols="80", rows="15")
+            br
+            input.content-button(type="button" value='Отправить')
+            a(href='/')
+                input(type="button" value='Закрыть')
