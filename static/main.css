@@ -1,23 +1,30 @@
 .recipe{
     display:flex;
     flex-direction: row;
-    border-bottom: 1px solid black;
-    padding-left:100px;
     padding-right: 100px;
+    padding-left:100px;
+
+    border-bottom: 1px solid black;
 }
 
-.recipe__button{
+
+
+
+.recipe__button
+{
     margin: 200px 50px;
 }
 
 .recipe__link{
     display: inline-block;
-    border:1px solid black;
     width:150px;
     height:40px;
+    margin:auto;
+
     color:black;
     text-align: center;
     vertical-align: middle;
+
     background-color: beige;
-    margin:auto;
+    border:1px solid black;
 }
