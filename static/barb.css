@@ -1,0 +1,144 @@
+.body{
+
+    margin:0px;
+    padding:0px;
+
+    font-family: "PT Sans", "Arial", serif;
+
+    background-color: lightgrey;
+}
+
+.page{
+    width: 100%;
+
+    margin:0px;
+
+    font-weight: bold;
+
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+.head__menu{
+    background-color: black;
+}
+
+.head__link{
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.head__logo{
+    display: none;
+}
+
+.content{
+    padding:20px;
+}
+
+.border{
+    border-bottom: 1px solid black;
+}
+
+.content__line{
+    display:none;
+}
+
+.content__news_text{
+    list-style: none;
+}
+
+.content__link{
+    display: inline-block;
+    margin:10px;
+    padding: 5px;
+
+    color:white;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    background-color: black;
+
+    border:none;
+}
+
+.content__foto{
+    width: 75%;
+}
+
+@media (min-width: 650px) {
+    .body{
+        background-image: url('img/background.jpg');
+    }
+
+    .head__menu{
+        width: 100%;
+    }
+
+    .head__list_left{
+        float: left;
+    }
+
+    .head__list_right{
+        float: right;
+        margin-right: 40px;
+    }
+
+    .head__logo{
+        display: block;
+        width:40%;
+        margin:20px auto;
+    }
+
+    .content{
+        width: 94%;
+        margin: 40px auto;
+
+        background-image: url("img/back-section.jpg");
+    }
+
+    .clearfix:after {
+        content: "";
+
+        display: block;
+        clear: both;
+    }
+
+    .content-layout-left{
+        float: left;
+        width: 45%;
+    }
+
+    .border{
+        padding:10px;
+
+        border:none;
+    }
+
+    .content-layout-right{
+        float: right;
+        width: 45%;
+    }
+
+    .content__line{
+        display:block;
+        float: left;
+        width: 1%;
+}
+}
+
+@media (min-width: 800px){
+    .head__list_left{
+        display: flex;
+        padding: 10px;
+    }
+
+    .head__link{
+        margin-left: 15px;
+    }
+}
