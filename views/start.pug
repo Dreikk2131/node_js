@@ -4,7 +4,8 @@ mixin recipe(recipe)
     .recipe
         .recipe__text
             h2= recipe.title
-            img(src= recipe.adress, alt= recipe.add)
+            h2(id = recipe.id)
+            img(src= recipe.adress, alt= recipe.add).recipe__img
             p= recipe.ind
             h3= recipe.head
             ul
@@ -15,7 +16,7 @@ mixin recipe(recipe)
                 a.link.recipe__link(href='/change_page') Редактировать
 
 block link
-    link(rel='stylesheet', href='common.css')
+    link(rel='stylesheet', media="screen", type="text/css", href='common-1.css')
     link(rel='stylesheet', href='main.css')
 
 block main

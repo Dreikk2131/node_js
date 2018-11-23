@@ -1,0 +1,156 @@
+.body{
+    color:#006363;
+    font-family: 'Mali', cursive;
+
+    &_layout{
+        margin-top: 0px;
+        padding: 0px;
+
+        background-color: bisque;
+
+        @media(min-width: 750px){
+            padding: 0px 50px;
+        }
+    }
+}
+
+.title{
+    width: 100%;
+    margin:0px;
+
+    background-color: #F3AE75;
+
+    @media (min-width: 750px) {
+        width: 85%;
+    }
+}
+
+.head{
+    &__text{
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 750px) {
+            flex-direction: row;
+        }
+    }
+
+    &__link{
+        color:#009999;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    &__slogan{
+        margin:auto;
+
+        font-weight: bold;
+        font-size:20px;
+
+        @media (min-width: 750px) {
+            margin-left: 50px;
+        }
+    }
+
+    &__recipe{
+        display: none;
+
+        @media (min-width: 750px) {
+            display: block;
+        }
+    }
+
+    &__recipe.open{
+        display:block;
+    }
+
+    &__list{
+        padding:5px;
+
+        font-size:20px;
+
+        list-style: none;
+
+        border-left: 1px solid lightgoldenrodyellow;
+
+        @media (min-width: 750px) {
+            display: inline-block;
+        }
+    }
+
+    &__button{
+        position: relative;
+
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin:10px auto;
+
+        background-color:white;
+        border-radius: 10%;
+
+        @media (min-width: 750px) {
+            display: none;
+        }
+    }
+
+    .head-span-line(@top){
+    position: absolute;
+    top: @top;
+
+    width: 20px;
+    height: 2px;
+
+    background-color: black;
+    }
+
+    &__span{
+        left: 50%;
+
+        margin-left: -10px;
+        .head-span-line(50%);
+    }
+
+    &__span::before{
+        content: '';
+        .head-span-line(-10px);
+    }
+
+    &__span::after{
+        content: '';
+        .head-span-line(10px);
+    }
+}
+
+.link{
+    text-decoration: none;
+}
+
+.content,
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    @media (min-width: 750px) {
+        margin:0px auto;
+    }
+
+    &_layout{
+        margin:0px;
+
+        background: linear-gradient(to right, bisque, white, bisque);
+    }
+}
+
+.foot{
+    &__text{
+        font-weight:bold;
+    }
+
+    &__image-field{
+        margin-left:30px;
+    }
+}

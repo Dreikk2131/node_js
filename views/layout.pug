@@ -3,13 +3,27 @@ html
     head
         meta(charset='utf-8')
         title recipe
+        meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Mali:400,700")
         block link
     body.body.body_layout
-        header.head.title.content
-            h1.head__brand
-                a.link.head__link(href='/') Rogalick
-            p.head__slogan This site about best recipe!
+        header.head.title
+            .head__text
+                h1.head__brand
+                    a.link.head__link(href='/') Rogalick
+                p.head__slogan This site about best recipe!
+            .head__menu
+                a(href = '#').head__button
+                    span.head__span
+                -var i = 1;
+                    ul(id='list').head__recipe
+                        li.head__list Список рецептов:
+                        while i<5
+                            li.head__list
+                                a.head__link(href = '#recipe-' + i) Рецепт #{i}
+                            - i= i+1;
+
+
         section.content.content_layout
             block main
         footer.foot.title
@@ -21,3 +35,4 @@ html
                     img.foot__image(src='img/fc.png' alt='facebook')
                 a(href='https://ok.ru/')
                     img.foot__image(src='img/ok.png' alt='ok')
+        script(src='button.js')
