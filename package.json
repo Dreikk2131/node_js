@@ -21,12 +21,12 @@
     "express": "^4.16.4",
     "express-less": "^0.1.0",
     "less-middleware": "^3.0.1",
+    "mongodb": "^3.1.10",
     "pug": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-config-google": "^0.11.0",
-    "eslint-config-recommended": "^4.0.0",
     "stylelint": "^9.8.0",
     "stylelint-config-airbnb": "0.0.0",
     "stylelint-config-recommended": "^2.1.0",

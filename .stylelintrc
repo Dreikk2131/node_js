@@ -6,6 +6,7 @@
   "rules": {
     "color-named": "always-where-possible",
     "function-url-quotes": "always",
+    "block-opening-brace-space-before": "always",
     "media-feature-name-no-vendor-prefix": true,
     "property-no-vendor-prefix": [
       true,

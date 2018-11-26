@@ -4,7 +4,7 @@ const lessM = require('less-middleware');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
-app.use(lessM(__dirname + '/static'));
+app.use(lessM(__dirname + '/less', {dest: (__dirname + '/static')}));
 app.use(express.static(__dirname + '/static'));
 
 

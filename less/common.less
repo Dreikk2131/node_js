@@ -1,20 +1,20 @@
-.body{
+.body {
     color:#006363;
     font-family: 'Mali', cursive;
 
-    &_layout{
+    &_layout {
         margin-top: 0px;
         padding: 0px;
 
         background-color: bisque;
 
-        @media(min-width: 750px){
+        @media(min-width: 750px) {
             padding: 0px 50px;
         }
     }
 }
 
-.title{
+.title {
     width: 100%;
     margin:0px;
 
@@ -25,8 +25,8 @@
     }
 }
 
-.head{
-    &__text{
+.head {
+    &__text {
         display: flex;
         flex-direction: column;
 
@@ -35,13 +35,13 @@
         }
     }
 
-    &__link{
+    &__link {
         color:#009999;
         font-weight: bold;
         text-decoration: none;
     }
 
-    &__slogan{
+    &__slogan {
         margin:auto;
 
         font-weight: bold;
@@ -52,7 +52,7 @@
         }
     }
 
-    &__recipe{
+    &__recipe {
         display: none;
 
         @media (min-width: 750px) {
@@ -60,11 +60,11 @@
         }
     }
 
-    &__recipe.open{
+    &__recipe.open {
         display:block;
     }
 
-    &__list{
+    &__list {
         padding:5px;
 
         font-size:20px;
@@ -78,7 +78,7 @@
         }
     }
 
-    &__button{
+    &__button {
         position: relative;
 
         display: block;
@@ -94,40 +94,40 @@
         }
     }
 
-    .head-span-line(@top){
-    position: absolute;
-    top: @top;
+    .head-span-line(@top) {
+        position: absolute;
+        top: @top;
 
-    width: 20px;
-    height: 2px;
+        width: 20px;
+        height: 2px;
 
-    background-color: black;
+        background-color: black;
     }
 
-    &__span{
+    &__span {
         left: 50%;
 
         margin-left: -10px;
         .head-span-line(50%);
     }
 
-    &__span::before{
+    &__span::before {
         content: '';
         .head-span-line(-10px);
     }
 
-    &__span::after{
+    &__span::after {
         content: '';
         .head-span-line(10px);
     }
 }
 
-.link{
+.link {
     text-decoration: none;
 }
 
 .content,
-.title{
+.title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -138,19 +138,19 @@
         margin:0px auto;
     }
 
-    &_layout{
+    &_layout {
         margin:0px;
 
         background: linear-gradient(to right, bisque, white, bisque);
     }
 }
 
-.foot{
-    &__text{
+.foot {
+    &__text {
         font-weight:bold;
     }
 
-    &__image-field{
+    &__image-field {
         margin-left:30px;
     }
 }
