@@ -1,0 +1,48 @@
+.recipe {
+    width: 90%;
+
+    border-bottom: 1px solid black;
+
+    @media (min-width: 750px) {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__text {
+        font-size: 12px;
+
+        @media (min-width: 750px) {
+            font-size: 16px;
+        }
+    }
+
+    &__img {
+        width:80%;
+
+        @media (min-width: 750px) {
+            width:50%;
+        }
+    }
+
+    &__button {
+        margin: 20px 0px;
+
+        @media (min-width: 750px) {
+            margin: 200px auto;
+        }
+    }
+
+    &__link {
+        display: inline-block;
+        width:150px;
+        height:40px;
+        margin:auto;
+
+        color:black;
+        text-align: center;
+        vertical-align: middle;
+
+        background-color: beige;
+        border:1px solid black;
+    }
+}

@@ -1,21 +1,22 @@
 extends layout.pug
 
 mixin recipe(recipe)
-    .content-for
-        .content-text
+    .recipe
+        .recipe__text
             h2= recipe.title
-            img(src= recipe.adress, alt= recipe.add)
+            h2(id = recipe.id)
+            img(src= recipe.adress, alt= recipe.add).recipe__img
             p= recipe.ind
             h3= recipe.head
             ul
                 each item in recipe.items
                     li= item
-        .content-refer
-            p.button
-                a(href='/change_page') Редактировать
+        .recipe__refer
+            p.recipe__button
+                a.link.recipe__link(href='/change_page') Редактировать
 
 block link
-    link(rel='stylesheet', href='common.css')
+    link(rel='stylesheet', media="screen", type="text/css", href='common.css')
     link(rel='stylesheet', href='main.css')
 
 block main
