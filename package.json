@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Dreikk2131/git-teach#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-less": "^0.1.0",
     "less-middleware": "^3.0.1",

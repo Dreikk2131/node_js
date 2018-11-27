@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const lessM = require('less-middleware');
+const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -50,12 +52,86 @@ app.get('/', (req, res) => {
   res.render('start', {recipes});
 });
 
-app.get('/download', (req, res) => {
-  res.download(__dirname + '/static/img/nach1.jpg');
-});
-
 app.get('/change_page', (req, res) => {
   res.render('change_page');
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const url = 'mongodb://localhost:27017';
+
+MongoClient.connect(url, (err, database) => {
+  const dat = database.db('usersdb');
+  const ObjectID = require('mongodb').ObjectID;
+  if (err) return console.log(err);
+
+  app.post('/notes', (req, res) => {
+    const note = {text: req.body.body, title: req.body.title};
+    dat.collection('notes').insertOne(note, (err, result) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(result.ops[0]);
+      }
+    });
+  });
+
+  app.get('/notes/', (req, res) => {
+    dat.collection('notes').find().toArray(function(err, results) {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(results);
+      }
+    });
+  });
+
+  app.get('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    const details = {'_id': new ObjectID(id)};
+    dat.collection('notes').findOne(details, (err, item) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(item);
+      }
+    });
+  });
+
+  app.put('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    const details = {'_id': new ObjectID(id)};
+    const changeContent = {text: req.body.body, title: req.body.title};
+    dat.collection('notes').findOneAndUpdate(details, {$set: changeContent}, (err, item) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(item);
+      }
+    });
+  });
+
+  app.delete('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    const details = {'_id': new ObjectID(id)};
+    dat.collection('notes').deleteOne(details, (err, item) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(item);
+      }
+    });
+  });
+
+  app.delete('/notes/', (req, res) => {
+    dat.collection('notes').drop((err, item) => {
+      if (err) {
+        res.send({'error': 'An error has occurred'});
+      } else {
+        res.send(item);
+      }
+    });
+  });
 });
 
 app.listen(5000, ()=> console.log('Server has been started'));
