@@ -3,6 +3,7 @@ const app = express();
 const lessM = require('less-middleware');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
+const { check, validationResult } = require('express-validator/check');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -65,8 +66,18 @@ MongoClient.connect(url, (err, database) => {
   const ObjectID = require('mongodb').ObjectID;
   if (err) return console.log(err);
 
-  app.post('/notes', (req, res) => {
-    const note = {text: req.body.body, title: req.body.title};
+  app.post('/notes', [
+    // username must be an email
+    check('title').isLength({min: 5}, {max: 15}).withMessage('must be at least 5 chars long'),
+    // password must be at least 5 chars long
+    check('text').isLength({ min: 5 }, {max: 80})
+  ], (req, res) => {
+    const note = {text: req.body.text, title: req.body.title};
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
     dat.collection('notes').insertOne(note, (err, result) => {
       if (err) {
         res.send({'error': 'An error has occurred'});
@@ -86,22 +97,41 @@ MongoClient.connect(url, (err, database) => {
     });
   });
 
-  app.get('/notes/:id', (req, res) => {
+  app.get('/notes/:id', [
+    check('id').isMongoId()
+], (req, res) => {
+    var errors = validationResult(req).isEmpty();
+    if (errors == true) {
     const id = req.params.id;
     const details = {'_id': new ObjectID(id)};
     dat.collection('notes').findOne(details, (err, item) => {
       if (err) {
         res.send({'error': 'An error has occurred'});
       } else {
+        console.log( errors);
         res.send(item);
       }
     });
+    } else {
+      console.log("Id error");
+      res.end('Sorry, but ID error');
+    }
+
   });
 
-  app.put('/notes/:id', (req, res) => {
+  app.put('/notes/:id',[
+    check('id').isMongoId()
+  ], [
+    // username must be an email
+    check('title').isLength({min: 5}, {max: 15}).withMessage('must be at least 5 chars long'),
+    // password must be at least 5 chars long
+    check('text').isLength({ min: 5 }, {max: 80})
+  ], (req, res) => {
+    var errors = validationResult(req).isEmpty();
+    if (errors == true) {
     const id = req.params.id;
     const details = {'_id': new ObjectID(id)};
-    const changeContent = {text: req.body.body, title: req.body.title};
+    const changeContent = {text: req.body.text, title: req.body.title};
     dat.collection('notes').findOneAndUpdate(details, {$set: changeContent}, (err, item) => {
       if (err) {
         res.send({'error': 'An error has occurred'});
@@ -109,9 +139,17 @@ MongoClient.connect(url, (err, database) => {
         res.send(item);
       }
     });
+    } else {
+        console.log("Id error");
+        res.end('Sorry, but ID error');
+  }
   });
 
-  app.delete('/notes/:id', (req, res) => {
+  app.delete('/notes/:id',[
+    check('id').isMongoId()
+  ], (req, res) => {
+    var errors = validationResult(req).isEmpty();
+    if (errors == true) {
     const id = req.params.id;
     const details = {'_id': new ObjectID(id)};
     dat.collection('notes').deleteOne(details, (err, item) => {
@@ -121,6 +159,10 @@ MongoClient.connect(url, (err, database) => {
         res.send(item);
       }
     });
+    } else {
+        console.log("Id error");
+        res.end('Sorry, but ID error');
+}
   });
 
   app.delete('/notes/', (req, res) => {
