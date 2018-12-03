@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 const express = require('express');
 const app = express();
 const lessM = require('less-middleware');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
-const { check, validationResult } = require('express-validator/check');
+const {check, validationResult} = require('express-validator/check');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -19,7 +20,7 @@ const recipes = [
     add: 'first rogalick',
     ind: 'Приготовьте рогалики с вареньем. Берите для этого блюда любое – яблочное, смородиновое или апельсиновое, но единственное правило состоит в том, чтобы варенье было достаточно густым, иначе начинка вся останется не деке.',
     head: 'Требуемые ингредиенты:',
-    items: ['Творога  350 гр', 'Мука 460 грамм', 'Соды, гашенная лимонным соком – 1 ложка', 'Сахара 80 грамм', 'Яичный желток 1 шт.']
+    items: ['Творога  350 гр', 'Мука 460 грамм', 'Соды, гашенная лимонным соком – 1 ложка', 'Сахара 80 грамм', 'Яичный желток 1 шт.'],
   },
   {
     title: 'Рецепт 2: Рогалики с начинкой из мармелада',
@@ -28,7 +29,7 @@ const recipes = [
     add: 'rogalick secon',
     ind: 'Достаточно необычными и вместе с тем вкусными получатся рогалики, если вы положите кусочек мармелада в них как начинку. Можете взять слоеный цветной мармелад, тогда десерт получится и вкусным, и красивым.',
     head: 'Требуемые ингредиенты:',
-    items: ['420 грамм муки', 'Дрожжей 1 ст.л', 'Яичный желток 1 шт. (для смазывания изделий)', 'Сахарный песок 120 грамм', 'Молока 220 мл']
+    items: ['420 грамм муки', 'Дрожжей 1 ст.л', 'Яичный желток 1 шт. (для смазывания изделий)', 'Сахарный песок 120 грамм', 'Молока 220 мл'],
   },
   {
     title: 'Рецепт 3: Рогалики с начинкой из сгущенки',
@@ -37,7 +38,7 @@ const recipes = [
     add: 'rogalick third',
     ind: 'Если вы решили приготовить рогалики  со сгущенкой, то лучше взять «варенку». Она более густая по консистенции и точно не покинет лакомство во время приготовления.',
     head: 'Требуемые ингредиенты:',
-    items: ['Муки 460 грамм', 'Сахара 150 грамм', 'соль', 'Сгущенка вареная густая', 'Дрожжи сухие 1 столовая ложка']
+    items: ['Муки 460 грамм', 'Сахара 150 грамм', 'соль', 'Сгущенка вареная густая', 'Дрожжи сухие 1 столовая ложка'],
   },
   {
     title: 'Рецепт 4: Рогалики с начинкой из яблок',
@@ -46,7 +47,7 @@ const recipes = [
     add: 'forth rogalick',
     ind: 'Выпечку можно готовить со свежими фруктами – клубникой, смородиной, сливой. Приготовим рогалики с яблоком. Советуем вам выбирать фрукты сладких сортов.',
     head: 'Требуемые ингредиенты:',
-    items: ['Муки 450 грамм', 'Сахара 140 грамм', 'Воды минеральной 320 мл', 'Дрожжей 1 ст.л.', '3 яблока', 'Соль, корица, масло растительное']
+    items: ['Муки 450 грамм', 'Сахара 140 грамм', 'Воды минеральной 320 мл', 'Дрожжей 1 ст.л.', '3 яблока', 'Соль, корица, масло растительное'],
   }];
 
 app.get('/', (req, res) => {
@@ -57,7 +58,7 @@ app.get('/change_page', (req, res) => {
   res.render('change_page');
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 const url = 'mongodb://localhost:27017';
 
@@ -67,113 +68,104 @@ MongoClient.connect(url, (err, database) => {
   if (err) return console.log(err);
 
   app.post('/notes', [
-    // username must be an email
     check('title').isLength({min: 5}, {max: 15}).withMessage('must be at least 5 chars long'),
-    // password must be at least 5 chars long
-    check('text').isLength({ min: 5 }, {max: 80})
-  ], (req, res) => {
-    const note = {text: req.body.text, title: req.body.title};
+    check('text').isLength({min: 5}, {max: 80}),
+  ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(422).json({errors: errors.array()});
     }
-
-    dat.collection('notes').insertOne(note, (err, result) => {
-      if (err) {
-        res.send({'error': 'An error has occurred'});
-      } else {
-        res.send(result.ops[0]);
-      }
-    });
+    const note = {text: req.body.text, title: req.body.title};
+    const doc = await dat.collection('notes');
+    const add = await doc.insertOne(note);
+    try {
+      res.send(await add.ops[0]);
+    } catch (err) {
+      console.log(err);
+      res.send({'error': 'An error has occurred'});
+    }
   });
 
-  app.get('/notes/', (req, res) => {
-    dat.collection('notes').find().toArray(function(err, results) {
-      if (err) {
-        res.send({'error': 'An error has occurred'});
-      } else {
-        res.send(results);
-      }
-    });
+
+  app.get('/notes/', async (req, res) => {
+    const doc = await dat.collection('notes');
+    const data = await doc.find();
+    const arrays = await data.toArray();
+    try {
+      res.send(await arrays);
+    } catch (err) {
+      console.log(err);
+      res.send({'error': 'An error has occurred'});
+    }
   });
 
   app.get('/notes/:id', [
-    check('id').isMongoId()
-], (req, res) => {
-    var errors = validationResult(req).isEmpty();
+    check('id').isMongoId(),
+  ], async (req, res) => {
+    const err = await validationResult(req);
+    const errors = await err.isEmpty();
     if (errors == true) {
-    const id = req.params.id;
-    const details = {'_id': new ObjectID(id)};
-    dat.collection('notes').findOne(details, (err, item) => {
-      if (err) {
+      const id = req.params.id;
+      const details = {'_id': new ObjectID(id)};
+      const doc = await dat.collection('notes');
+      const findData = await doc.findOne(details);
+      try {
+        res.send(await findData);
+      } catch (erro) {
+        console.log(erro);
         res.send({'error': 'An error has occurred'});
-      } else {
-        console.log( errors);
-        res.send(item);
       }
-    });
     } else {
-      console.log("Id error");
+      console.log('Id error');
       res.end('Sorry, but ID error');
     }
-
   });
 
-  app.put('/notes/:id',[
-    check('id').isMongoId()
+  app.put('/notes/:id', [
+    check('id').isMongoId(),
   ], [
-    // username must be an email
     check('title').isLength({min: 5}, {max: 15}).withMessage('must be at least 5 chars long'),
-    // password must be at least 5 chars long
-    check('text').isLength({ min: 5 }, {max: 80})
-  ], (req, res) => {
-    var errors = validationResult(req).isEmpty();
+    check('text').isLength({min: 5}, {max: 80}),
+  ], async (req, res) => {
+    const request = await validationResult(req);
+    const errors = await request.isEmpty();
     if (errors == true) {
-    const id = req.params.id;
-    const details = {'_id': new ObjectID(id)};
-    const changeContent = {text: req.body.text, title: req.body.title};
-    dat.collection('notes').findOneAndUpdate(details, {$set: changeContent}, (err, item) => {
-      if (err) {
-        res.send({'error': 'An error has occurred'});
-      } else {
-        res.send(item);
-      }
-    });
+      const id = req.params.id;
+      const details = {'_id': new ObjectID(id)};
+      const changeContent = {text: req.body.text, title: req.body.title};
+      const doc = await dat.collection('notes');
+      const findData = doc.findOneAndUpdate(details, {$set: changeContent});
+      res.send(await findData);
     } else {
-        console.log("Id error");
-        res.end('Sorry, but ID error');
-  }
+      console.log('Id error');
+      res.end('Sorry, but ID error or length is wrong');
+    }
   });
 
-  app.delete('/notes/:id',[
-    check('id').isMongoId()
-  ], (req, res) => {
-    var errors = validationResult(req).isEmpty();
+
+  app.delete('/notes/:id', [
+    check('id').isMongoId(),
+  ], async (req, res) => {
+    const request = await validationResult(req);
+    const errors = await request.isEmpty();
     if (errors == true) {
-    const id = req.params.id;
-    const details = {'_id': new ObjectID(id)};
-    dat.collection('notes').deleteOne(details, (err, item) => {
-      if (err) {
-        res.send({'error': 'An error has occurred'});
-      } else {
-        res.send(item);
-      }
-    });
+      const id = req.params.id;
+      const details = {'_id': new ObjectID(id)};
+      const doc = dat.collection('notes');
+      const delData = doc.deleteOne(details);
+      res.send(delData);
     } else {
-        console.log("Id error");
-        res.end('Sorry, but ID error');
-}
+      console.log('Id error');
+      res.end('Sorry, but ID error');
+    }
   });
 
-  app.delete('/notes/', (req, res) => {
-    dat.collection('notes').drop((err, item) => {
-      if (err) {
-        res.send({'error': 'An error has occurred'});
-      } else {
-        res.send(item);
-      }
-    });
+  app.delete('/notes/', async (req, res) => {
+    const doc = await dat.collection('notes');
+    const allDel = await doc.drop();
+    res.send(await allDel);
   });
 });
+
 
 app.listen(5000, ()=> console.log('Server has been started'));
