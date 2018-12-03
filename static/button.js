@@ -1,6 +1,6 @@
-var titleElem = document.querySelector('.head__button');
-var listElem = document.querySelector('.head__recipe');
+const titleElem = document.querySelector('.head__button');
+const listElem = document.querySelector('.head__recipe');
 
 titleElem.onclick = function() {
-    listElem.classList.toggle('open');
+  listElem.classList.toggle('open');
 };
